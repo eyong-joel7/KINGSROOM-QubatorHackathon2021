@@ -1,0 +1,31 @@
+.conference.video_app__nav {
+right:0;
+left: auto!important;
+top: 3rem;
+height: calc(100vh - 8rem);
+background-color: transparent;
+}
+
+.conference .video_app__nav.primary-and-secondary {
+    width: auto;
+}
+.conference .primary-and-secondary+.video_app__main .title-area, .primary-and-secondary+.video_app__main .content-area {
+    margin-left: 0 !important;
+    /* margin-right: 10rem; */
+}
+.conference .video_app__nav.hidden {
+    transform: translateX(100%) !important;
+    height: 0px;
+    width: 0;
+    display: none
+}
+.footer-link--footer-button-link--JEtP9, .footer-link--footer-link--3EuAW {
+    width: 100%;
+    left:0;
+}
+.conference .primary-and-secondary+.video_app__main .title-area, .primary-and-secondary+.video_app__main .content-area {
+    margin-left: 0;
+}
+.footer-link--footer-button-link--JEtP9, .footer-link--footer-link--3EuAW {
+    left: 0 !important
+}
