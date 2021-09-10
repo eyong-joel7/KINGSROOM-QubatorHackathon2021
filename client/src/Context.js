@@ -4,7 +4,7 @@ import { io } from 'socket.io-client';
 import Peer from 'simple-peer';
 
 const SocketContext = createContext();
-// const URL = 'https://kings-video-conferencing.herokuapp.com/';
+const URL = 'https://kings-video-conferencing.herokuapp.com/';
 // const socket = io(URL);
 
 
@@ -32,7 +32,7 @@ const ContextProvider = ({ children }) => {
 
 
   useEffect(() => {
-    socketRef.current = io('http://localhost:5000/') 
+    socketRef.current = io(URL) 
     if(stream && roomid){
     const roomID = roomid.trim().toLowerCase();
     socketRef.current.emit('join room', {roomID, name}, (error) => {
