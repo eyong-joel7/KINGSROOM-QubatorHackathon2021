@@ -84,14 +84,16 @@ const Card = (props) => {
     } 
     if (myStream && host) {
       setLoading(false);
+      // myVideo.current.srcObject = myStream;
      roomid && history.push(`/conference-room`);
     };
     if(myStream && join ) {
       setLoading(false)
+      // myVideo.current.srcObject = myStream;
       history.push(`/conference-room`)
     }
 
-  }, [callAccepted, history, host, join, myStream, roomid, setName]);
+  }, [callAccepted, history, host, join, myStream, myVideo, roomid, setName]);
 
 // useEffect(()=>{
 //   return () => {
@@ -133,7 +135,7 @@ const Card = (props) => {
     navigator.mediaDevices
       .getUserMedia(constraints)
       .then(function (stream) {
-        console.log('stream', stream.getVideoTracks())
+        // console.log('stream', stream.getVideoTracks())
         // let videoTracks = stream.getVideoTracks();
         // let audioTracks = stream.getAudioTracks();
         // console.group("Media Info");
@@ -146,7 +148,7 @@ const Card = (props) => {
         };
         setStream(stream);
         setMyStream(stream);
-        myVideo.current.srcObject = stream;
+  
       })
       .catch(function (error) {
         setLoading(false);

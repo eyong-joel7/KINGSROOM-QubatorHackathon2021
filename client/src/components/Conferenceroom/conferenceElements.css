@@ -8,6 +8,7 @@ background-color: transparent;
 
 .conference .video_app__nav.primary-and-secondary {
     width: auto;
+    margin-bottom: 5rem;
 }
 .conference .primary-and-secondary+.video_app__main .title-area, .primary-and-secondary+.video_app__main .content-area {
     margin-left: 0 !important;

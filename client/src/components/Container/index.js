@@ -10,7 +10,6 @@ import './ContainerElements.css';
 import { HomeScreen } from '../Home';
 import JoinAMeeting from '../Join';
 import StartAMeeting from '../Host';
-import { Link } from 'react-router-dom';
 import ProfileScreen from '../ProfileScreen';
 
 const useStyles = makeStyles((theme) => ({
@@ -189,7 +188,7 @@ const pageControl = (input) => {
                     </div>
 
                     <div className="_header-content--part-info--3iVwL">
-                      <h1>Kings' room</h1>
+                      <h1>Kingsroom</h1>
                     </div>
                   </div>
                 </div>
@@ -207,7 +206,7 @@ const pageControl = (input) => {
                   <div>
                     <div className="_header-content--header--3mdiS shared--outer-container--3eppq">
                       <div className="_header-content--part-info--3iVwL">
-                        <h1>Kings' room</h1>
+                        <h1>Kingsroom</h1>
                       </div>
                     </div>
                   </div>

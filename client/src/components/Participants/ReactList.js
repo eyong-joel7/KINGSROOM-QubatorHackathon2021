@@ -11,6 +11,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
     maxWidth: 360,
+    paddingLeft: 20,
+    paddingRight: 20,
     backgroundColor: "transparent",
     height: "100%"
   },
@@ -28,7 +30,7 @@ export default function SimpleList({ users }) {
            <Divider />
       <List component="nav" aria-label="main mailbox folders" style = {{backgroundColor: 'transparent'}}>
         {users.map((user) => (
-          <ListItem button>
+          <ListItem button key = {user.name}>
             <ListItemIcon>
             <Avatar alt="dummy" src={`${process.env.PUBLIC_URL}images/headphones-with-mic.svg`} />
             </ListItemIcon>

@@ -4,7 +4,7 @@ import { io } from 'socket.io-client';
 import Peer from 'simple-peer';
 
 const SocketContext = createContext();
-const URL = 'https://kings-video-conferencing.herokuapp.com/';
+// const URL = 'https://kings-video-conferencing.herokuapp.com/';
 // const socket = io(URL);
 
 
@@ -27,13 +27,10 @@ const ContextProvider = ({ children }) => {
   // const socketRef = useRef(); //used as peerRef
   const main__mute_button = useRef();
   const main__video_button = useRef();
-
-  //chnage this later on to URL
-
-
   useEffect(() => {
-    socketRef.current = io(URL) 
+    socketRef.current = io('http://localhost:5000/') 
     if(stream && roomid){
+      // myVideo.current.srcObject = stream;
     const roomID = roomid.trim().toLowerCase();
     socketRef.current.emit('join room', {roomID, name}, (error) => {
       if(error) {
@@ -59,7 +56,9 @@ const ContextProvider = ({ children }) => {
           peerID: userID,
           peer
         })
-        peers.push(peer);
+        peers.push({
+          peerID: userID,
+          peer});
       }
         )
         setPeers(peers);
@@ -70,13 +69,26 @@ const ContextProvider = ({ children }) => {
             peerID: payload.callerID,
             peer,
           })
-          setPeers(users => [...users, peer])
+          const peerObj = {
+            peer, 
+            peerID: payload.callerID
+          }
+          setPeers(users => [...users, peerObj])
         });
 
         socketRef.current.on('receiving return signal', payload =>{
           const item = peersRef.current.find(p => p.peerID = payload.id);
           item.peer.signal(payload.signal);
           setCallAccepted(true); //added
+        });
+        socketRef.current.on('user left', id => {
+          const peerObj = peersRef.current.find(p => p.peerID === id);
+          if(peerObj){
+            peerObj.peer.destroy();
+          }
+          const peers = peersRef.current.filter(p => p.peerID !== id);
+          peersRef.current = peers;
+          setPeers(peers);
         })
    
       }

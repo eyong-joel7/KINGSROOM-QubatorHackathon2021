@@ -443,10 +443,10 @@ html li {
 
 ._header-content--header--3mdiS, ._header-content--header-small--3sk5P {
     transition: min-height .3s ease-in-out;
-    background-color:#ffF ;
+    background-color:#0d203b ;
     display: flex;
     align-items: center;
-    color: #0d203b;
+    color: #fff ;
 }
 ._header-content--header--3mdiS {
     max-height: 3rem;
@@ -468,9 +468,11 @@ html li {
 }
 ._header-content--header--3mdiS h1 {
     font-size: 2rem;
-    font-weight: 600;
+    font-weight: 400;
     text-align: center;   
-    color: #1f1f1f; 
+    letter-spacing: 0.1938rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif, 'Times New Roman', Times, serif;
+    color: #f1f1f1; 
 
 }
 @media screen  and (max-width: 480px) {
