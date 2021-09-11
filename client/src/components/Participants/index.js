@@ -1,11 +1,9 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import './participants.css';
-import { SocketContext } from "../../Context";
 import InfoBar from '../ChatComponents/InfoBar/InfoBar';
 import SimpleList from './ReactList';
 
-const Participants = ({toggleControls}) => {
-    const { users  }  = useContext(SocketContext)
+const Participants = ({toggleControls, users}) => {
     return (
         <div className="outerContainer">
         <div className="container">

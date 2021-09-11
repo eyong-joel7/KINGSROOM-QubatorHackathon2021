@@ -1,9 +1,8 @@
 
-import { useContext, React } from "react";
-import { SocketContext } from "../../Context";
+import { React } from "react";
 import "./style.css";
 
-const MainControls = ({ toggleHamburger, setSelected }) => {
+const MainControls = (props) => {
   const {
     leaveCall,
     playStop,
@@ -12,7 +11,9 @@ const MainControls = ({ toggleHamburger, setSelected }) => {
     main__video_button,
     stream,
     users,
-  } = useContext(SocketContext);
+    toggleHamburger, 
+    setSelected
+  } = props;
   // const isMobile = useMediaQuery({
   //   query: "(max-device-width: 480px)",
   // });

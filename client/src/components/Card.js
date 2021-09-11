@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Button,
   TextField,
@@ -10,12 +10,9 @@ import {
 import {
   AddToQueue,
   ArrowForward,
-
-  PhoneDisabled,
 } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
 
-import { SocketContext } from "../Context";
 import NotificationModal from "./Modals";
 import { useHistory } from "react-router-dom";
 
@@ -53,44 +50,19 @@ const Card = (props) => {
   const { children, join, host } = props;
   const history = useHistory();
   const [show, setShow] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [idToCall, setIdToCall] = useState("");
-  const [isCopied, setIsCopied] = useState(false);
-  const [isJoin, setIsJoin] = useState(false);
+ 
   const [message, setMessage] = useState("");
-  const [myStream, setMyStream] = useState(null);
-  const {
-    roomid,
-    callAccepted,
-    name,
-    setName,
-    setStream,
-    myVideo,
-    callEnded,
-    leaveCall,
-    setRoomID,
-  } = useContext(SocketContext);
+  const [name, setName] = useState('');
 
-  const videoConstraints = {
-    height: window.innerHeight /2,
-    width: window.innerWidth /2
-  };
 
   useEffect(() => {
     const storedName = localStorage.getItem("firstName");
     if (storedName) {
       setName(storedName);
-    } 
-    if (myStream && host) {
-      setLoading(false);
-     roomid && history.push(`/conference-room`);
-    };
-    if(myStream && join ) {
-      setLoading(false)
-      history.push(`/conference-room`)
     }
 
-  }, [callAccepted, history, host, join, myStream, myVideo, roomid, setName]);
+  }, []);
 
 // useEffect(()=>{
 //   return () => {
@@ -106,87 +78,33 @@ const Card = (props) => {
 
   const classes = useStyles();
 
+
+
   const joinMeeting = (idToCall) => {
-    if (name ) {
-      localStorage.setItem("firstName", name);
-      if (!isJoin && idToCall !== "") {
-        setIsJoin(true);
-        setRoomID(idToCall);
-        getUserMedia();
-      } else {
-        setShow(true);
-        setMessage("ID of the Meeting you want to join is required");
-      }
-    } else {
-      setShow(true);
-      setMessage(`Name is required`);
-    }
-  };
-
-  const getUserMedia = () => {
-    const constraints = (window.constraints = {
-      audio: true,
-     video: videoConstraints
-    });
-    setLoading(true);
-    navigator.mediaDevices
-      .getUserMedia(constraints)
-      .then(function (stream) {
-        // console.log('stream', stream.getVideoTracks())
-        // let videoTracks = stream.getVideoTracks();
-        // let audioTracks = stream.getAudioTracks();
-        // console.group("Media Info");
-        // console.log("Got stream with constraints:", constraints);
-        // console.log("Using video device: " + videoTracks[0].label);
-        // console.log("Using audo device: " + audioTracks[0].label);
-        // console.groupEnd();
-        stream.onremovetrack = function () {
-          console.log("Stream ended");
-        };
-        setStream(stream);
-        setMyStream(stream);
-  
-      })
-      .catch(function (error) {
-        setLoading(false);
-        setShow(true);
-        if (error.name === "ConstraintNotSatisfiedError") {
-          setMessage(
-            "The resolution " +
-              constraints.video.width.exact +
-              "x" +
-              constraints.video.height.exact +
-              " px is not supported by your device."
-          );
-        } else if (error.name === "PermissionDeniedError") {
-          setMessage(
-            "Permissions have not been granted to use your camera and " +
-              "microphone, you need to allow the page access to your devices"
-          );
-        }
-       else setMessage("getUserMedia error: " + error.name + `error: ${error}` );
+    if (name && idToCall) {
+      idToCall &&
+      history.push({
+        pathname: `/conference-room/${idToCall}`,
+        state: { roomid: idToCall, name: name },
       });
-  };
-
-  const startMeeting = () => {
-    copyID();
-    if (roomid) {
-      setRoomID(roomid)
-      getUserMedia();
-      } else {
-        setShow(true);
-        setMessage("ID of the Meeting you want to join is required");
-      }
-  };
-
-  const copyID = () => {
-    if (name && roomid) {
-      setIsCopied(true)
     } else {
       setShow(true);
       setMessage(`Name and/ MeetingID is Required`);
     }
   };
+  const startMeeting = () => {
+    if (name && idToCall) {
+      idToCall &&
+      history.push({
+        pathname: `/conference-room/${idToCall}`,
+        state: { roomid: idToCall, name: name },
+      });
+    } else {
+      setShow(true);
+      setMessage(`Name and/ MeetingID is Required`);
+    }
+  };
+
   return (
     <>
       <Container className={classes.container}>
@@ -206,44 +124,19 @@ const Card = (props) => {
                   />
                   <TextField
                     label="Room ID"
-                    value={roomid}
-                    onChange={(e) => {setRoomID(e.target.value)}}
+                    value={idToCall}
+                    onChange={(e) => {setIdToCall(e.target.value)}}
                     fullWidth
                   />
-                  {/* {!isCopied ? (
-                    <CopyToClipboard text={roomid} className={classes.margin}>
-                      <Button
-                        onClick={() => copyID()}
-                        variant="contained"
-                        color="secondary"
-                        fullWidth
-                        startIcon={<Assignment fontSize="small" />}
-                      >
-                        {`Copy & Share Your ID`}
-                      </Button>
-                    </CopyToClipboard>
-                  ) : (
                     <Button
                       className={classes.margin}
                       onClick={() => startMeeting()}
                       variant="contained"
                       color="primary"
                       fullWidth
-                      endIcon={!loading && <ArrowForward fontSize="large" />}
+                      endIcon={<ArrowForward fontSize="large" />}
                     >
-                      {loading ? "Starting ..." : "Start Meeting"}
-                    </Button>
-                  )} */}
-                    <Button
-                      className={classes.margin}
-                      onClick={() => startMeeting()}
-                      variant="contained"
-                      color="primary"
-                      fullWidth
-                      disabled = {isCopied}
-                      endIcon={!loading && <ArrowForward fontSize="large" />}
-                    >
-                      {loading ? "Starting ..." : "Start Meeting"}
+                       Start Meeting
                     </Button>
                 </Grid>
               )}
@@ -267,18 +160,7 @@ const Card = (props) => {
                     onChange={(e) => setIdToCall(e.target.value)}
                     fullWidth
                   />
-                  {(callAccepted && !callEnded) || isJoin ? (
-                    <Button
-                      variant="contained"
-                      color="secondary"
-                      startIcon={<PhoneDisabled fontSize="large" />}
-                      fullWidth
-                      onClick={leaveCall}
-                      className={classes.margin}
-                    >
-                      Joining...
-                    </Button>
-                  ) : (
+                
                     <Button
                       onClick={() => joinMeeting(idToCall)}
                       className={classes.margin}
@@ -289,7 +171,7 @@ const Card = (props) => {
                     >
                       JOIN
                     </Button>
-                  )}
+                  
                 </Grid>
               )}
             </Grid>

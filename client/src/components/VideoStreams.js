@@ -1,6 +1,7 @@
-import { useContext, useEffect,  useRef } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect,  useRef } from "react";
 import styled from "styled-components";
-import { SocketContext } from "../Context";
+
 
 const Container = styled.div`
   padding: 20px;
@@ -23,7 +24,6 @@ const StyledVideo = styled.video`
 
 const Video = (props) => {
   const userRef = useRef();
-  const { peer } = props;
 // //      if ("srcObject" in userRef.current) {
 //     userRef.current.srcObject = stream;
 // } else {
@@ -31,11 +31,12 @@ const Video = (props) => {
 // }
 
 useEffect(()=> {
-    peer.on('stream', (stream) => {
+    props.peer.on('stream', (stream) => {
           userRef.current.srcObject = stream;
+          console.log('i am in this component')
     });
 } 
-, [peer])
+, [])
 
   return (
     <>
@@ -43,11 +44,9 @@ useEffect(()=> {
     </>
   );
 };
-const VideoStreams = () => {
-  const { peers, myVideo, stream } = useContext(SocketContext);
-  useEffect(() => {
-    if (myVideo.current) myVideo.current.srcObject = stream;
-  }, [myVideo, peers, stream]);
+
+const VideoStreams = (props) => {
+  const { peers, myVideo} = props;
   return (
     <Container>
       <StyledVideo muted ref={myVideo} autoPlay playsInline />

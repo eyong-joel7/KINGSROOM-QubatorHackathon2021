@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 const PORT = process.env.PORT || 5000;
-app.use("/api/message", messageRouter);
+
 
 // old logic
 // io.on("connection", (socket) => {
@@ -47,15 +47,15 @@ function capitalize(s)
 const socketToRoom = {};
 
 io.on("connection", (socket) => {
-  socket.on("join room", ({ roomID, name }, callBack) => {
+  socket.on("join room", ({ roomID, userName:name }, callBack) => {
     const { error, user } = addUser({ id: socket.id, name, roomID });
     if (error) return callBack(error);
     if (users[roomID]) {
       const length = users[roomID].length;
-      // if (length === 4) {
-      //   socket.emit("room full");
-      //   return;
-      // }
+      if (length === 4) {
+        socket.emit("room full");
+        return;
+      }
       users[roomID].push(socket.id);
     } else {
       users[roomID] = [socket.id];

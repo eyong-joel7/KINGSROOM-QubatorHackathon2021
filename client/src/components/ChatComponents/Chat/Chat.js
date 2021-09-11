@@ -1,16 +1,15 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import Messages from '../Messages/Messages';
 import InfoBar from '../InfoBar/InfoBar';
 import Input from '../Input/Input';
 
 import './Chat.css';
-import { SocketContext } from "../../../Context";
 
 
 
-const Chat = ({ location, toggleControls}) => {
-const {roomid:room, message, messages, sendMessage, setMessage, name }  = useContext(SocketContext)
+const Chat = (props) => {
+const { toggleControls, roomid:room, message, messages, sendMessage, setMessage, name }  = props;
   return (
     <div className="outerContainer">
       <div className="container">
