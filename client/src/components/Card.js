@@ -68,13 +68,12 @@ const Card = (props) => {
     myVideo,
     callEnded,
     leaveCall,
-    users,
     setRoomID,
   } = useContext(SocketContext);
 
   const videoConstraints = {
-    height: window.innerHeight / users?.length+1,
-    width: window.innerWidth / users?.length+1
+    height: window.innerHeight /2,
+    width: window.innerWidth /2
   };
 
   useEffect(() => {
@@ -84,12 +83,10 @@ const Card = (props) => {
     } 
     if (myStream && host) {
       setLoading(false);
-      // myVideo.current.srcObject = myStream;
      roomid && history.push(`/conference-room`);
     };
     if(myStream && join ) {
       setLoading(false)
-      // myVideo.current.srcObject = myStream;
       history.push(`/conference-room`)
     }
 

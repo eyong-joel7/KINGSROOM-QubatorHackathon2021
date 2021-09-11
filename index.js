@@ -90,10 +90,9 @@ io.on("connection", (socket) => {
   });
 
   socket.on("sending signal", (payload) => {
-    io.to(payload.userToSignal).emit("user joined", {
+    io.to(payload.userToSignal).emit('user joined', {
       signal: payload.signal,
       callerID: payload.callerID,
-      name: payload.name,
     });
   });
 

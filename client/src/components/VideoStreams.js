@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect,  useRef } from "react";
 import styled from "styled-components";
 import { SocketContext } from "../Context";
 
@@ -15,30 +15,34 @@ const Container = styled.div`
 const StyledVideo = styled.video`
   margin: 10px;
   width: 40%;
-  height: 30%; 
+  height: 30%;
 `;
 
 const Video = (props) => {
   const userRef = useRef();
-const {peer} = props;
-  useEffect(() => {
-    peer.on("stream", (stream) => {
-    if(userRef.current) userRef.current.srcObject = stream;
+  const { peer } = props;
+  console.log('peer',peer)
+    peer.on('stream', (stream) => {
+        console.log('i am in here1')
+        if ("srcObject" in userRef.current) {
+          userRef.current.srcObject = stream;
+          console.log('i am in here1')
+        } else {
+          userRef.current.src = window.URL.createObjectURL(stream);
+          console.log('i am in here2')
+        }
     });
-  }, [peer, userRef]);
-
   return (
     <>
       <StyledVideo playsInline autoPlay ref={userRef} />
     </>
   );
 };
-
 const VideoStreams = () => {
-  const { peers, myVideo, stream} = useContext(SocketContext);
+  const { peers, myVideo, stream } = useContext(SocketContext);
   useEffect(() => {
-if(myVideo.current) myVideo.current.srcObject = stream
-  },[myVideo, stream])
+    if (myVideo.current) myVideo.current.srcObject = stream;
+  }, [myVideo, peers, stream]);
   return (
     <Container>
       <StyledVideo muted ref={myVideo} autoPlay playsInline />

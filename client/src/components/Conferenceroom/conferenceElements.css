@@ -5,6 +5,14 @@ top: 3rem;
 height: calc(100vh - 8rem);
 background-color: transparent;
 }
+@media screen and (max-width: 768px){
+    .conference.video_app__nav {
+        height: 100%;
+        top: 0;
+        z-index: 200000;
+        /* padding: 10px; */
+    }
+}
 
 .conference .video_app__nav.primary-and-secondary {
     width: auto;

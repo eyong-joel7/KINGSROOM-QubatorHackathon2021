@@ -4,7 +4,7 @@ import { io } from 'socket.io-client';
 import Peer from 'simple-peer';
 
 const SocketContext = createContext();
-// const URL = 'https://kings-video-conferencing.herokuapp.com/';
+const URL = 'https://kings-video-conferencing.herokuapp.com/';
 // const socket = io(URL);
 
 
@@ -28,14 +28,13 @@ const ContextProvider = ({ children }) => {
   const main__mute_button = useRef();
   const main__video_button = useRef();
   useEffect(() => {
-    socketRef.current = io('http://localhost:5000/') 
+    socketRef.current = io(URL) 
     if(stream && roomid){
-      // myVideo.current.srcObject = stream;
     const roomID = roomid.trim().toLowerCase();
     socketRef.current.emit('join room', {roomID, name}, (error) => {
       if(error) {
         setCallAccepted(false)
-        alert(error);
+        alert(error + " Please Go back and take another user name");
       }
     else{
       setCallAccepted(true)
@@ -64,7 +63,7 @@ const ContextProvider = ({ children }) => {
         setPeers(peers);
     })
         socketRef.current.on('user joined', payload => {
-          const peer = addPeer(payload.signal, payload.callerID, stream, payload.name);
+          const peer = addPeer(payload.signal, payload.callerID, stream);
           peersRef.current.push({
             peerID: payload.callerID,
             peer,
@@ -109,7 +108,7 @@ const sendMessage = (event) => {
   }
 }
 
-  const createPeer = (userToSignal, callerID, stream, name) => {
+  const createPeer = (userToSignal, callerID, stream) => {
     const peer = new Peer({
       initiator: true,
       trickle: false,
@@ -120,7 +119,6 @@ const sendMessage = (event) => {
         userToSignal,
         callerID,
         signal,
-        name
       });
     });
 
