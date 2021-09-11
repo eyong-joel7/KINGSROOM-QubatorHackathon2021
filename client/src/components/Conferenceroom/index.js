@@ -86,7 +86,7 @@ const ConferenceRoom = () => {
             {/* Put video thumbnail here */}
             <div
               className="content-area"
-              style={{ backgroundColor: "rgb(250, 251, 252)" }}
+              style={{ backgroundColor: "#f1f1f1" }}
             >
               <div aria-hidden="true" className="hidden-header">
                 <div className="video_app__header">
@@ -110,6 +110,7 @@ const ConferenceRoom = () => {
                   <div className="index--body--3G2lS">
                     <div className={classes.wrapper}>
                       <VideoStreams />
+                      {/* <VideoPlayer/> */}
                       <Notifications show={true} />
                     </div>
                   </div>

@@ -616,6 +616,7 @@ html li {
     flex-direction: column;
     flex: 1 0 auto;
     transition: .3s height ease-in-out;
+    background-color: #f1f1f1;
 }
  @media screen and (min-width: 900px){
     .cont.video_app__body {

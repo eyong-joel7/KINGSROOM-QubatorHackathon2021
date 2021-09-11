@@ -112,7 +112,7 @@ const pageControl = (input) => {
                   <div className="_nav--nav-group-with-sidebar--2eeny">
                     <ul className="nav-group">
                       <li className="nav-item">
-                        <a href="/" title="Settings">
+                        <a  href="#" onClick={() => setPage('profile')} title="Settings" >
                           <span className="nav-item-icon-container">
                             <span className="nav-item-icon">
                               <i
@@ -130,7 +130,7 @@ const pageControl = (input) => {
                           <span className="nav-item-title">Settings</span>
                         </a>
                       </li>
-                      <li className="nav-item">
+                      {/* <li className="nav-item">
                         <a href="/" title="Logout">
                           <span className="nav-item-icon-container">
                             <span className="nav-item-icon">
@@ -149,6 +149,7 @@ const pageControl = (input) => {
                           <span className="nav-item-title">Logout</span>
                         </a>
                       </li>
+                  */}
                     </ul>
                   </div>
                 </div>

@@ -7,6 +7,7 @@ const Container = styled.div`
   display: flex;
   max-height: calc(100vh - 8rem);
   width: 90%;
+  align-items: center;
   margin: auto;
   margin-bottom: 5rem;
   flex-wrap: wrap;
@@ -16,22 +17,26 @@ const StyledVideo = styled.video`
   margin: 10px;
   width: 40%;
   height: 30%;
+  border: 2px #1f1f1f solid;
+  border-radius: 10px;
 `;
 
 const Video = (props) => {
   const userRef = useRef();
   const { peer } = props;
-  console.log('peer',peer)
+// //      if ("srcObject" in userRef.current) {
+//     userRef.current.srcObject = stream;
+// } else {
+//   userRef.current.src = window.URL.createObjectURL(stream);
+// }
+
+useEffect(()=> {
     peer.on('stream', (stream) => {
-        console.log('i am in here1')
-        if ("srcObject" in userRef.current) {
           userRef.current.srcObject = stream;
-          console.log('i am in here1')
-        } else {
-          userRef.current.src = window.URL.createObjectURL(stream);
-          console.log('i am in here2')
-        }
     });
+} 
+, [peer])
+
   return (
     <>
       <StyledVideo playsInline autoPlay ref={userRef} />

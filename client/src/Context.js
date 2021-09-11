@@ -25,6 +25,7 @@ const ContextProvider = ({ children }) => {
   const myVideo = useRef();
   const userVideo = useRef();
   // const socketRef = useRef(); //used as peerRef
+  // 'http://localhost:5000/'
   const main__mute_button = useRef();
   const main__video_button = useRef();
   useEffect(() => {
@@ -134,7 +135,9 @@ const peer = new Peer({
 
 peer.on('signal', signal => {
 socketRef.current.emit('returning signal', {signal, callerID})
-} )
+} );
+
+
 
 peer.signal(incomingSignal);
 setCallAccepted(true); //added
