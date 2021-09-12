@@ -13,7 +13,7 @@ import { useLocation, useHistory} from "react-router-dom";
 import { io } from 'socket.io-client';
 import Peer from 'simple-peer';
 import NotificationModal from '../Modals';
-// const URL = 'https://kings-video-conferencing.herokuapp.com/';
+const URl = 'https://kings-video-conferencing.herokuapp.com/';
 
 const videoConstraints = {
   height: window.innerHeight /2,
@@ -47,7 +47,7 @@ const ConferenceRoom = (props) => {
    history.push('/');
    return
     }
-    socketRef.current = io(URL);
+    socketRef.current = io(URl);
     const constraints = (window.constraints = {
       audio: true,
      video: videoConstraints
