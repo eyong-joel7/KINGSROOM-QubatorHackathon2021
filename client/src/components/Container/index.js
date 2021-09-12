@@ -76,7 +76,7 @@ const pageControl = (input) => {
                   <div className="_nav--nav-group-with-sidebar--2eeny">
                     <ul className="nav-group">
                       <li className="nav-item">
-                        <a  title="Home" onClick = {() => setPage('home')}>
+                        <a  title="Home" onClick = {() => {setPage('home'); toggleHamburger()}}>
                           <span className="nav-item-icon-container">
                             <span className="nav-item-icon">
                               <i
@@ -95,7 +95,7 @@ const pageControl = (input) => {
                         </a>
                       </li>
                       <li className="nav-item _nav--help--1_fHw _nav--inactive--2UbLW">
-                        <a href="#" title="Profile" onClick={() => setPage('profile')}>
+                        <a href="#" title="Profile" onClick={() => {setPage('profile'); toggleHamburger()}}>
                           <span className="nav-item-icon-container">
                             <span className="nav-item-icon">
                               <div className="_nav--unread-badge-container--11uuK">
@@ -112,7 +112,7 @@ const pageControl = (input) => {
                   <div className="_nav--nav-group-with-sidebar--2eeny">
                     <ul className="nav-group">
                       <li className="nav-item">
-                        <a  href="#" onClick={() => setPage('profile')} title="Settings" >
+                        <a  href="#" onClick={() => { setPage('profile'); toggleHamburger()}} title="Settings" >
                           <span className="nav-item-icon-container">
                             <span className="nav-item-icon">
                               <i

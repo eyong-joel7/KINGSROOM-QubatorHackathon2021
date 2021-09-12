@@ -1,18 +1,38 @@
 
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button'
 
-const  NotificationModal  =  ({action, actionText, rejectText, message, show, handleClose}) => {
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import { useEffect } from "react";
 
-    return (
-      <>
-        <Modal
-          show={show}
-          onHide={handleClose}
-          backdrop="static"
-          keyboard={false}
-        >
-          <Modal.Body>{message}</Modal.Body>
+const NotificationModal = ({
+  action,
+  actionText,
+  rejectText,
+  message,
+  timer,
+  show,
+  handleClose,
+}) => {
+  useEffect(() => {
+    if (timer) {
+      const timer1 = setTimeout(() => {
+        handleClose();
+        console.log('i m here')
+      }, 3000);
+      return () => clearTimeout(timer1);
+    }
+  }, [handleClose, timer]);
+
+  return (
+    <>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+      >
+        <Modal.Body>{message}</Modal.Body>
+        {!timer && (
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               {rejectText ? rejectText : "Close"}
@@ -23,9 +43,10 @@ const  NotificationModal  =  ({action, actionText, rejectText, message, show, ha
               </Button>
             )}
           </Modal.Footer>
-        </Modal>
-      </>
-    );
-  }
-  
+        )}
+      </Modal>
+    </>
+  );
+};
+
 export default NotificationModal;

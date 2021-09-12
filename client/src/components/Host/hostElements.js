@@ -9,7 +9,7 @@ height: 100%;
 padding: 10px;
 margin-top: 30px;
 max-width: 80%;
-@media screen and (max-width: 480px){
+@media screen and (max-width: 767px){
  flex-direction: column;
  max-width: 100%;
 }

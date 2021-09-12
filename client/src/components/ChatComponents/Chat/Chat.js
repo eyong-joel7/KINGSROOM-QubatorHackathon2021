@@ -9,7 +9,7 @@ import './Chat.css';
 
 
 const Chat = (props) => {
-const { toggleControls, roomid:room, message, messages, sendMessage, setMessage, name }  = props;
+const { toggleControls, roomid:room, message, messages, sendMessage, setMessage, name}  = props;
   return (
     <div className="outerContainer">
       <div className="container">

@@ -116,7 +116,7 @@ article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, s
 }
 ._nav--nav-group-with-sidebar--2eeny {
     width: 4.5rem;
-    margin-top: 1rem;
+    margin: 3rem 0;
 }
 ._nav--nav-group-with-sidebar--2eeny a span {
     font-size: .6rem;
@@ -831,9 +831,9 @@ html main li, html main p {
     overflow-y: hidden;
 }
 .vds-color--cerulean {
-    color: #0c81a1!important;
-    fill:#078cb1;
-
+    color: #fff!important;
+    fill:#fff;
+    font-weight: bold;
 }
 .vds-round-button .vds-icon {
     margin: 0;

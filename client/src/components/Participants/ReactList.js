@@ -6,6 +6,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
 import { Avatar } from "@material-ui/core";
+import userIcon from '../../icons/headphones-with-mic.svg'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,7 +33,7 @@ export default function SimpleList({ users }) {
         {users.map((user) => (
           <ListItem button key = {user.name}>
             <ListItemIcon>
-            <Avatar alt="dummy" src={`${process.env.PUBLIC_URL}images/headphones-with-mic.svg`} />
+            <Avatar alt="dummy" src={userIcon} />
             </ListItemIcon>
             <ListItemText primary= {capitalize(user.name)} />
           </ListItem>

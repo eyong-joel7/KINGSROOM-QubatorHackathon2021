@@ -38,3 +38,14 @@ background-color: transparent;
 .footer-link--footer-button-link--JEtP9, .footer-link--footer-link--3EuAW {
     left: 0 !important
 }
+
+.conference .video_app__body{
+    height: 100%;
+    width: 100%;
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+    padding: 20px 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    
+}

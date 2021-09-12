@@ -54,7 +54,12 @@
     max-width: 80px;
     cursor: pointer;
     text-align: center;
+}
 
+@media screen and (min-width: 600px) {
+    .main__controls__button {
+    max-width: 120px;
+    }
 }
 .leave{
     background-color: #EB534B;

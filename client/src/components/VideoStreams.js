@@ -6,7 +6,7 @@ import styled from "styled-components";
 const Container = styled.div`
   padding: 20px;
   display: flex;
-  max-height: calc(100vh - 8rem);
+  max-height: 100%;
   width: 90%;
   align-items: center;
   margin: auto;
@@ -16,8 +16,8 @@ const Container = styled.div`
 
 const StyledVideo = styled.video`
   margin: 10px;
-  width: 40%;
-  height: 30%;
+  width: 48%;
+  height: 40%;
   border: 2px #1f1f1f solid;
   border-radius: 10px;
 `;
