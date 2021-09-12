@@ -1,7 +1,9 @@
 const express = require("express");
 const app = express();
-const server = require("http").createServer(app);
 const cors = require("cors");
+app.use(cors());
+const server = require("http").createServer(app);
+
 const dotenv = require("dotenv");
 
 dotenv.config();
@@ -12,10 +14,6 @@ const io = require("socket.io")(server, {
     methods: ["GET", "POST"],
   },
 });
-
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
 
 const PORT = process.env.PORT || 5000;
@@ -107,5 +105,8 @@ io.on("connection", (socket) => {
     socket.broadcast.emit('user left', socket.id)
   });
 });
-server.get('/', (req, res) => res.send('server is running'))
+app.get('/', (req, res) => {
+  res.send('Server is ready');
+}
+);
 server.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
