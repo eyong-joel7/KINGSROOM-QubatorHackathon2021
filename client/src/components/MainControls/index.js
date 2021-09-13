@@ -3,6 +3,7 @@ import { React } from "react";
 import "./style.css";
 import Badge from '@material-ui/core/Badge';
 import GroupIcon from '@material-ui/icons/Group';
+// import PersonAddIcon from '@material-ui/icons/PersonAdd';
 
 
 
@@ -50,13 +51,16 @@ const MainControls = (props) => {
         <Badge badgeContent={users?.length} color="primary">
         <GroupIcon/>
       </Badge>
-          {/* <i className="fas fa-user-friends"><span className  = 'count'>{users?.length}</span></i>  */}
           <span>Participants</span>
         </div>
         <div className="main__controls__button" onClick = {()=> {toggleHamburger(); setSelected('chat')}}>
           <i className="fas fa-comment-alt"></i>
           <span>Chat</span>
         </div>
+        {/* <div className="main__controls__button" onClick = {()=> {toggleHamburger(); setSelected('chat')}}>
+         <span><PersonAddIcon/></span>
+          <span>Invite</span>
+        </div> */}
       </div>
         <div className="main__controls__block">
           <div className="main__controls__button leave">

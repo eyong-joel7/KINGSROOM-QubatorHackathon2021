@@ -35,7 +35,7 @@ if(userName) setUserName(capitalize(userName))
         </Welcome>
         <Container>
           <JoinContainer>
-            <ImageContainer>
+            <ImageContainer  onClick={() => pageControl("join")}>
               <Image src={JoinIcon} className="logo" alt="join icon" />
             </ImageContainer>
             <TextWrapper style={{ display: isLaptop ? "block" : "none" }}>
@@ -54,7 +54,7 @@ if(userName) setUserName(capitalize(userName))
             </Button>
           </JoinContainer>
           <JoinContainer>
-            <ImageContainer>
+            <ImageContainer  onClick={() => pageControl("host")}>
               <Image src={StartIcon} className="logo" alt="Assurance Logo" />
             </ImageContainer>
             <TextWrapper style={{ display: isLaptop ? "block" : "none" }}>
