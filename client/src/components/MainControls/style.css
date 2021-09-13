@@ -24,7 +24,7 @@
 }
 
 .main__controls {
-    background-color: #0d203b;
+    background-color: inherit;
 }
 
 .main__right {
@@ -74,6 +74,15 @@ opacity: 0.8;
 .main__controls__button i {
     font-size: 24px;
 }
+@media screen and (max-width: 480px) {
+    .main__controls__button i {
+        font-size: 18px;
+    }
+    .main__controls__button span {
+        font-size: 0.7rem;
+    }
+    
+}
 
 .main__right {
     display: flex;
@@ -119,7 +128,7 @@ opacity: 0.8;
 .count {
     background-color: red;
     color:white;
-    border-radius: 50%;
+    border-radius: 100%;
     padding: 5px;
     font-size: 0.8rem;
 }

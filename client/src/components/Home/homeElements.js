@@ -4,11 +4,20 @@ export const Container = styled.div`
 display: flex;
 align-items: center;
 justify-content: space-evenly;
-width:100%;
-height: 100%;
 padding: 10px;
 `;
+export const OutContainer = styled.div`
+width:100%;
+height: 100%;
+display: flex;
+align-content: center;
+flex-direction: column;
+justify-content: space-evenly;
+margin-top: 3rem;
+padding-top: 20px;
+padding-bottom: 20px;
 
+`
 export const JoinContainer = styled.div`
 display: flex;
 max-width: 50%;
@@ -18,13 +27,23 @@ padding: 20px;
 `
 
 export const ImageContainer = styled.div`
-width: 100%;
-height: 100%;
-justify-self: center;
+    width: 200px;
+    height: 200px;
+    justify-self: center;
+    border-radius: 100%;
+    background-color: #0e6a3c;
+    padding: 40px;
+    @media screen and (max-width: 900px){
+        width: 100px;
+    height: 100px;
+    padding: 20px;
+}
+    
 `;
 export const Image = styled.img`
-height: 200px;
-width: 100%
+height: 100%;
+width: 100%;
+
 `
 
 export const TextWrapper = styled.div`
@@ -32,12 +51,12 @@ text-align: center;
 display: flex;
 flex-direction: column;
 `
-export const H1 = styled.h1`
-font-size: 62px;
-font-weight: bold;
+export const H1 = styled.h3`
+font-size: 48px;
+font-weight: 300;
 padding: 5px;
 @media screen and (max-width: 767px){
-    font-size: 42px;
+    font-size: 32px;
 }
 `;
 
@@ -48,6 +67,12 @@ font-size: 18px;
     font-size: 16px;
 }
 `;
+export const Welcome = styled.div`
+width: 100%;
+text-align: center;
+color:#1f1f1f;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+`
 
 export const ButtonWrapper = styled.div`
 display: flex;

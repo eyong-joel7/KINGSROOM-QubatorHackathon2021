@@ -17,8 +17,7 @@ const NotificationModal = ({
     if (timer) {
       const timer1 = setTimeout(() => {
         handleClose();
-        console.log('i m here')
-      }, 3000);
+      }, 1000);
       return () => clearTimeout(timer1);
     }
   }, [handleClose, timer]);

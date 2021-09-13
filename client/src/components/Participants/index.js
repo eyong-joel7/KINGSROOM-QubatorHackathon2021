@@ -12,7 +12,6 @@ const Participants = ({toggleControls, users}) => {
       users
         ? (
           <>
-            {/* <h1 style ={{color: '#fff'}}>Active Participants:</h1> */}
            <SimpleList users = {users}/>
           </>
         )

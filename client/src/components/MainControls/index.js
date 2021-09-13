@@ -1,6 +1,10 @@
 
 import { React } from "react";
 import "./style.css";
+import Badge from '@material-ui/core/Badge';
+import GroupIcon from '@material-ui/icons/Group';
+
+
 
 const MainControls = (props) => {
   const {
@@ -14,12 +18,11 @@ const MainControls = (props) => {
     toggleHamburger, 
     setSelected
   } = props;
-  // const isMobile = useMediaQuery({
-  //   query: "(max-device-width: 480px)",
-  // });
+ 
 
   return (
     <div className="main__controls">
+       
       {stream && (
         <div className="main__controls__block">
           <div
@@ -42,15 +45,12 @@ const MainControls = (props) => {
       )}
 
       <div className="main__controls__block">
-        {/* {!isMobile && (
-          <div className="main__controls__button">
-            <i className="fas fa-shield-alt"></i>
-            <span>Security</span>
-          </div>
-        )} */}
 
         <div className="main__controls__button participants" onClick= {()=> { toggleHamburger(); setSelected('users')}}>
-          <i className="fas fa-user-friends"><span className  = 'count'>{users?.length}</span></i> 
+        <Badge badgeContent={users?.length} color="primary">
+        <GroupIcon/>
+      </Badge>
+          {/* <i className="fas fa-user-friends"><span className  = 'count'>{users?.length}</span></i>  */}
           <span>Participants</span>
         </div>
         <div className="main__controls__button" onClick = {()=> {toggleHamburger(); setSelected('chat')}}>

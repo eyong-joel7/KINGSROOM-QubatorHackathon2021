@@ -6,7 +6,7 @@ import React, {useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
 import './ContainerElements.css';
-
+import Icon from '../../icons/user.svg'
 import { HomeScreen } from '../Home';
 import JoinAMeeting from '../Join';
 import StartAMeeting from '../Host';
@@ -99,7 +99,7 @@ const pageControl = (input) => {
                           <span className="nav-item-icon-container">
                             <span className="nav-item-icon">
                               <div className="_nav--unread-badge-container--11uuK">
-                                <Avatar alt="dummy" src={`${process.env.PUBLIC_URL}images/user.svg`} />
+                                <Avatar alt="dummy" src={Icon} />
                               </div>
                             </span>
                           </span>
@@ -222,10 +222,6 @@ const pageControl = (input) => {
               <div className="index--container--uI0r1">
                 <div className="index--body--3G2lS">
                   <div className={classes.wrapper}>
-               {/* { isShowing &&   <VideoPlayer />}  
-                    {!isShowing && (
-                      <Sidebar enterMeetingRoom = {enterMeetingRoom} />
-                    )} */}
                   {page === 'home' && <HomeScreen pageControl = {pageControl}/>}  
                   {page === 'join' && <JoinAMeeting pageControl = {pageControl} />}
                   {page === 'host' && <StartAMeeting pageControl = {pageControl} />}

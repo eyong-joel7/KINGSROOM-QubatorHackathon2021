@@ -714,8 +714,8 @@ html main li, html main p {
 
 
 .footer-link--footer-button-link--JEtP9, .footer-link--footer-link--3EuAW {
-    background-color: #0d203b;
-    border-top: 1px solid #dbe2e8;
+    background-color: #1a1a1d;
+    border-top: 1px solid #1a1a1d;
     display: block;
     flex: 0 0 auto;
    z-index: 10000;
@@ -736,6 +736,7 @@ html main li, html main p {
     align-items: center;
     display: flex;
     height: 100%;
+    max-width: 1024px;
     /* padding: 10px; */
 }
 @media (max-width: 61.25em){

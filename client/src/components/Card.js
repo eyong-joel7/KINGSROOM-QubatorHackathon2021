@@ -82,6 +82,7 @@ const Card = (props) => {
 
   const joinMeeting = (idToCall) => {
     if (name && idToCall) {
+      localStorage.setItem("firstName", name);
       idToCall &&
       history.push({
         pathname: `/conference-room/${idToCall}`,
@@ -94,6 +95,7 @@ const Card = (props) => {
   };
   const startMeeting = () => {
     if (name && idToCall) {
+      localStorage.setItem("firstName", name);
       idToCall &&
       history.push({
         pathname: `/conference-room/${idToCall}`,

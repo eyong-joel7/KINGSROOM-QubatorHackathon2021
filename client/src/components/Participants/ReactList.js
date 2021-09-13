@@ -6,12 +6,13 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
 import { Avatar } from "@material-ui/core";
-import userIcon from '../../icons/headphones-with-mic.svg'
+import userIcon from '../../icons/headphones.svg'
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    maxWidth: 360,
+    minWidth: 260,
+    maxWidth:380,
     paddingLeft: 20,
     paddingRight: 20,
     backgroundColor: "transparent",
@@ -27,13 +28,13 @@ export default function SimpleList({ users }) {
   }
   return (
     <div className={classes.root}>
-        <h4 style = {{color: '#fff', fontWeight: 'bold'}}>Active Users</h4>
+        <h4 style = {{color: '#fff', fontWeight: 'bold'}}>Active Users ({users.length})</h4>
            <Divider />
       <List component="nav" aria-label="main mailbox folders" style = {{backgroundColor: 'transparent'}}>
         {users.map((user) => (
           <ListItem button key = {user.name}>
             <ListItemIcon>
-            <Avatar alt="dummy" src={userIcon} />
+            <Avatar alt="headphones" src={userIcon} />
             </ListItemIcon>
             <ListItemText primary= {capitalize(user.name)} />
           </ListItem>
