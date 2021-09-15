@@ -4,7 +4,6 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import Divider from "@material-ui/core/Divider";
 import { Avatar } from "@material-ui/core";
 import userIcon from '../../icons/headphones.svg'
 
@@ -28,8 +27,6 @@ export default function SimpleList({ users }) {
   }
   return (
     <div className={classes.root}>
-        <h4 style = {{color: '#fff', fontWeight: 'bold'}}>Active Users ({users.length})</h4>
-           <Divider />
       <List component="nav" aria-label="main mailbox folders" style = {{backgroundColor: 'transparent'}}>
         {users.map((user) => (
           <ListItem button key = {user.name}>

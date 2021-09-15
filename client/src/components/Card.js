@@ -64,15 +64,6 @@ const Card = (props) => {
 
   }, []);
 
-// useEffect(()=>{
-//   return () => {
-//     if (myStream) {
-//       myStream.getTracks() &&
-//         myStream.getTracks().forEach((track) => track.stop());
-//         setStream(null);
-//     }
-//   };
-// },[myStream, setStream])
 
   const handleClose = () => setShow(false);
 
@@ -85,8 +76,8 @@ const Card = (props) => {
       localStorage.setItem("firstName", name);
       idToCall &&
       history.push({
-        pathname: `/conference-room/${idToCall}`,
-        state: { roomid: idToCall, name: name },
+        pathname: `/conference-room/${(idToCall).replace(/\s+/g, '')}`,
+        state: { roomid: (idToCall).replace(/\s+/g, ''), name: name },
       });
     } else {
       setShow(true);
@@ -98,8 +89,8 @@ const Card = (props) => {
       localStorage.setItem("firstName", name);
       idToCall &&
       history.push({
-        pathname: `/conference-room/${idToCall}`,
-        state: { roomid: idToCall, name: name },
+        pathname: `/conference-room/${(idToCall).replace(/\s+/g, '')}`,
+        state: { roomid:  (idToCall).replace(/\s+/g, ''), name: name},
       });
     } else {
       setShow(true);

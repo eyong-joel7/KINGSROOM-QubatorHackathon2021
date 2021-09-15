@@ -86,10 +86,30 @@ outline: none;
 }
 
 .MuiDivider-root {
-  border: none;
+  border: none !important;
   height: 3px !important;
   margin: 1rem 0 !important;
-  background-color: #2979ff !important;
 
 }
+.MuiAvatar-colorDefault {
+  color: #fff !important;
+  background-color: #0d203b !important;
+}
+ .MuiSvgIcon-root {
+  width: 2rem !important;
+    height: 2rem !important;
+}
+.MuiButtonBase-root.MuiIconButton-root.MuiIconButton-edgeEnd .MuiIconButton-label{
+  color: #0e6a3c !important;
+}
+.MuiTypography-body {
+  font-family: Georgia, 'Times New Roman', Times, serif !important;
+}
 
+.MuiTypography-root.MuiListItemText-primary.MuiTypography-body2.MuiTypography-displayBlock{
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+._nav--unread-badge-container--11uuK{
+  color:#129a5f;
+}

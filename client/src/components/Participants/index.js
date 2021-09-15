@@ -1,18 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './participants.css';
-import InfoBar from '../ChatComponents/InfoBar/InfoBar';
 import SimpleList from './ReactList';
+import SearchAppBar from './AppBar'
 
 const Participants = ({toggleControls, users}) => {
+  const [usersList, setUserList]  = useState([])
+  useEffect(() => {
+    setUserList([...users]);
+  }, [users]);
+
     return (
         <div className="outerContainer">
         <div className="container">
-        <InfoBar  toggleControls = {toggleControls}/>
+        <SearchAppBar setUserList = {setUserList} usersList = {usersList} users = {users} toggleControls = {toggleControls}/>
         {
       users
         ? (
           <>
-           <SimpleList users = {users}/>
+           <SimpleList users = {usersList}/>
           </>
         )
         : null

@@ -28,7 +28,7 @@ const socketToRoom = {};
 io.on("connection", (socket) => {
   socket.on("join room", ({ roomID, userName:name }, callBack) => {
     const { error, user } = addUser({ id: socket.id, name, roomID });
-    if (error) return callBack(error + "Please Go back and take another user name");
+    if (error) return callBack(error + " Return and take another user name");
     if (users[roomID]) {
       const length = users[roomID].length;
       if (length === 4) {

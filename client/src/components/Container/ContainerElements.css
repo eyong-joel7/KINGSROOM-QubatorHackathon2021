@@ -137,7 +137,12 @@ html li {
 .video_app__nav .nav-item {
     line-height: 1;
     margin-bottom: .25rem;
+    transition: all 0.3 ease-in-out;
 }
+.video_app__nav .nav-item:hover{
+    transform: scale(1.1);
+}
+
 ._nav--nav-group-with-sidebar--2eeny a {
     display: flex;
     flex-direction: column;
@@ -643,7 +648,7 @@ html li {
     padding: 2.625rem 2.625rem 1.5rem;
 }
 html main li, html main p {
-    font-size: .875rem;
+    font-size: 1rem;
 }
 .shared--card--3X88h {
     background: #fff;

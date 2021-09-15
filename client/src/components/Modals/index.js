@@ -3,6 +3,7 @@
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { useEffect } from "react";
+import {Close } from "@material-ui/icons";
 
 const NotificationModal = ({
   action,
@@ -34,7 +35,7 @@ const NotificationModal = ({
         {!timer && (
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
-              {rejectText ? rejectText : "Close"}
+              {rejectText ? rejectText :<Close/>}
             </Button>
             {action && (
               <Button variant="primary" onClick={action}>

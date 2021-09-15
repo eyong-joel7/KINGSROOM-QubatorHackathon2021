@@ -8,12 +8,12 @@ padding: 10px;
 `;
 export const OutContainer = styled.div`
 width:100%;
-height: 100%;
+max-height: 100%;
 display: flex;
 align-content: center;
 flex-direction: column;
-justify-content: space-evenly;
-margin-top: 3rem;
+justify-content: flex-start;
+/* margin-top: 3rem; */
 padding-top: 20px;
 padding-bottom: 20px;
 
@@ -27,8 +27,8 @@ padding: 20px;
 `
 
 export const ImageContainer = styled.div`
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     justify-self: center;
     border-radius: 100%;
     background-color: #0e6a3c;
@@ -36,6 +36,11 @@ export const ImageContainer = styled.div`
     @media screen and (max-width: 900px){
         width: 100px;
     height: 100px;
+    padding: 20px;
+}
+    @media screen and (max-width: 480px){
+        width: 80px;
+    height: 80px;
     padding: 20px;
 }
     
@@ -52,7 +57,7 @@ display: flex;
 flex-direction: column;
 `
 export const H1 = styled.h3`
-font-size: 48px;
+font-size: 38px;
 font-weight: 300;
 padding: 5px;
 @media screen and (max-width: 767px){
