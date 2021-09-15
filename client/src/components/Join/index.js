@@ -56,7 +56,7 @@ const JoinAMeeting = ({ pageControl }) => {
         <JoinContainer>
           <Card join />
         </JoinContainer>
-      </Container>
+        </Container>
     </>
   );
 };

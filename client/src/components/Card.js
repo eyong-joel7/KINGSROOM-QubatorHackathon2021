@@ -81,7 +81,7 @@ const Card = (props) => {
       });
     } else {
       setShow(true);
-      setMessage(`Name and/ MeetingID is Required`);
+      setMessage(`Please fill in all reqiured fields`);
     }
   };
   const startMeeting = () => {
@@ -94,7 +94,7 @@ const Card = (props) => {
       });
     } else {
       setShow(true);
-      setMessage(`Name and/ MeetingID is Required`);
+      setMessage(`Please fill in all required fields`);
     }
   };
 
@@ -116,7 +116,7 @@ const Card = (props) => {
                     fullWidth
                   />
                   <TextField
-                    label="Room ID"
+                    label="Meeting ID"
                     value={idToCall}
                     onChange={(e) => {setIdToCall(e.target.value)}}
                     fullWidth

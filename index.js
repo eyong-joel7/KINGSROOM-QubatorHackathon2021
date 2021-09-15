@@ -28,10 +28,10 @@ const socketToRoom = {};
 io.on("connection", (socket) => {
   socket.on("join room", ({ roomID, userName:name }, callBack) => {
     const { error, user } = addUser({ id: socket.id, name, roomID });
-    if (error) return callBack(error + " Return and take another user name");
+    if (error) return callBack(error);
     if (users[roomID]) {
       const length = users[roomID].length;
-      if (length === 4) {
+      if (length === 8) {
         removeUser(socket.id);
         return callBack('Sorry, the room is full. The number of Participants allowed for this room is limited. Please Contact the organizer')
       }
