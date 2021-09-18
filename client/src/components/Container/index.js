@@ -11,6 +11,7 @@ import JoinAMeeting from '../Join';
 import StartAMeeting from '../Host';
 import ProfileScreen from '../ProfileScreen';
 import { Person } from '@material-ui/icons';
+import SettingScreen from '../Settings';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -113,7 +114,7 @@ const pageControl = (input) => {
                   <div className="_nav--nav-group-with-sidebar--2eeny">
                     <ul className="nav-group">
                       <li className="nav-item">
-                        <a  href="#" onClick={() => { setPage('profile'); toggleHamburger()}} title="Settings" >
+                        <a  href="#" onClick={() => { setPage('setting'); toggleHamburger()}} title="Settings" >
                           <span className="nav-item-icon-container">
                             <span className="nav-item-icon">
                               <i
@@ -227,6 +228,7 @@ const pageControl = (input) => {
                   {page === 'join' && <JoinAMeeting pageControl = {pageControl} />}
                   {page === 'host' && <StartAMeeting pageControl = {pageControl} />}
                   {page === 'profile' && <ProfileScreen pageControl = {pageControl}/>}
+                  {page === 'setting' && <SettingScreen pageControl = {pageControl}/>}
                   </div>
                 </div>
                 {/* <span className="footer-link--footer-link--3EuAW">

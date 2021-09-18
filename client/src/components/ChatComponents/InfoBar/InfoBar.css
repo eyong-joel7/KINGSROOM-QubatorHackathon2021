@@ -27,3 +27,15 @@
 .onlineIcon {
   margin-right: 5%;
 }
+
+.closeicon {
+  color: rgb(255, 255, 255);
+    background: #182d4a;
+    border-radius: 50%;
+    padding: 2px;
+}
+
+.meetingID{
+  color: #ffd700;
+  font-weight: bold;
+}

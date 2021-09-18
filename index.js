@@ -28,20 +28,62 @@ const socketToRoom = {};
 io.on("connection", (socket) => {
   socket.on("join room", ({ roomID, userName:name }, callBack) => {
     const { error, user } = addUser({ id: socket.id, name, roomID });
+
     if (error) return callBack(error);
     if (users[roomID]) {
       const length = users[roomID].length;
-      if (length === 8) {
+      if (length === 4) {
         removeUser(socket.id);
-        return callBack('Sorry, the room is full. The number of Participants allowed for this room is limited. Please Contact the organizer')
+        return callBack('Sorry, this room is full. Please Contact the organizer')
       }
-      users[roomID].push(socket.id);
+      const newUser = {
+       id: socket.id,
+       userName:name,
+      }
+      users[roomID].push(newUser);
+      socket.username = name;
     } else {
-      users[roomID] = [socket.id];
+      // users[roomID] = [socket.id];
+      return callBack('The meeting might have not started or meeting ID is incorrect')
     }
 
-    //messaging inplementaion
+    //messaging implementaion
     
+    socket.join(user.room)
+    const userName = capitalize(name);
+    io.to(socket.id).emit("message", {
+      user: "admin",
+      text: `Welcome, esteemed ${userName}`,
+    });
+    socket.broadcast.to(user.room).emit("message", {
+      user: "admin",
+      text: `${userName} just joined!`,
+    });
+    io.to(user.room).emit("roomData", {
+      room: user.room,
+      users: getUsersInRoom(user.room),
+    });
+
+    socketToRoom[socket.id] = roomID;
+    const usersInThisRoom = users[roomID].filter((user) => user.id !== socket.id);
+    socket.emit("all users", usersInThisRoom);
+    console.log('usersInThisRoom',usersInThisRoom)
+  });
+
+  socket.on("start a meeting", ({ roomID, userName:name }, callBack) => {
+    const { error, user } = addUser({ id: socket.id, name, roomID });
+    if (error) return callBack(error);
+    const newUser = {
+      id: socket.id,
+      userName:name,
+     }
+    if (roomID in users) {
+       users[roomID].push(newUser);
+    }
+    else {
+      users[roomID] = [newUser];
+    }
+    socket.username = name;
     socket.join(user.room);
     const userName = capitalize(name);
     io.to(socket.id).emit("message", {
@@ -58,9 +100,12 @@ io.on("connection", (socket) => {
     });
 
     socketToRoom[socket.id] = roomID;
-    const usersInThisRoom = users[roomID].filter((id) => id !== socket.id);
+    const usersInThisRoom = users[roomID].filter((user) =>user.id !== socket.id);
     socket.emit("all users", usersInThisRoom);
+    console.log('usersInThisRoom',usersInThisRoom)
   });
+
+
 
   socket.on("sendMessage", ({message, userID}, callback) => {
     const user = getUser(socket.id);
@@ -72,6 +117,7 @@ io.on("connection", (socket) => {
     io.to(payload.userToSignal).emit('user joined', {
       signal: payload.signal,
       callerID: payload.callerID,
+      userName: socket.username
     });
   });
 
@@ -81,12 +127,25 @@ io.on("connection", (socket) => {
       id: socket.id,
     });
   });
+  // // when the client emits 'typing', we broadcast it to others
+  // socket.on('typing', () => {
+  //   socket.broadcast.emit('typing', {
+  //     username: socket.username
+  //   });
+  // });
+
+  // // when the client emits 'stop typing', we broadcast it to others
+  // socket.on('stop typing', () => {
+  //   socket.broadcast.emit('stop typing', {
+  //     username: socket.username
+  //   });
+  // });
 
   socket.on("disconnect", () => {
     const roomID = socketToRoom[socket.id];
     const user = removeUser(socket.id);
     if (user) {
-      const userName =capitalize( user.name);
+      const userName = capitalize( user.name);
       io.to(roomID).emit("message", {
         user: "Admin",
         text: `${userName} has left.`,
@@ -99,11 +158,16 @@ io.on("connection", (socket) => {
 
     let room = users[roomID];
     if (room) {
-      room = room.filter((id) => id !== socket.id);
+      room = room.filter((user) => user.id !== socket.id);
       users[roomID] = room;
     }
-    socket.broadcast.emit('user left', socket.id)
+    socket.broadcast.to(roomID).emit('user left', socket.id)
   });
+  
+  socket.on('change', (payload) => {
+    socket.broadcast.emit('change',payload)
+});
+
 });
 app.get('/', (req, res) => {
   res.send('Server is ready');

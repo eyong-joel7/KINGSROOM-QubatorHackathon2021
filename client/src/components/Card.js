@@ -8,8 +8,6 @@ import {
   Paper,
 } from "@material-ui/core";
 import {
-  AddToQueue,
-  ArrowForward,
 } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -90,7 +88,7 @@ const Card = (props) => {
       idToCall &&
       history.push({
         pathname: `/conference-room/${(idToCall).replace(/\s+/g, '')}`,
-        state: { roomid:  (idToCall).replace(/\s+/g, ''), name: name},
+        state: { roomid:  (idToCall).replace(/\s+/g, ''), name: name, host:true},
       });
     } else {
       setShow(true);
@@ -127,7 +125,6 @@ const Card = (props) => {
                       variant="contained"
                       color="primary"
                       fullWidth
-                      endIcon={<ArrowForward fontSize="large" />}
                     >
                        Start Meeting
                     </Button>
@@ -160,7 +157,7 @@ const Card = (props) => {
                       variant="contained"
                       color="primary"
                       fullWidth
-                      startIcon={<AddToQueue fontSize="large" />}
+                      
                     >
                       JOIN
                     </Button>

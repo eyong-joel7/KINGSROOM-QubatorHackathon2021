@@ -10,11 +10,12 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import NotificationModal from '../Modals';
+import { ChevronLeft } from '@material-ui/icons';
 
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(6),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -70,6 +71,8 @@ const update = (e) => {
 const handleClose = () => {setShow(false); pageControl('home')}
 
   return (
+    <div style ={{width: '100%', padding:'20px'}}>
+       <div onClick = {()=> handleClose()} style = {{display: 'flex', alignItems:'center'}}> <ChevronLeft/><span>Back</span></div>
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
@@ -133,5 +136,6 @@ const handleClose = () => {setShow(false); pageControl('home')}
    
       <NotificationModal message = {message}  show  = {show} handleClose = {handleClose}/>
     </Container>
+    </div>
   );
 }

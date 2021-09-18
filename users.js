@@ -7,7 +7,7 @@ const addUser = ({ id, name, roomID:room }) => {
   const existingUser = users.find((user) => user.room === room && user.name === name);
 
   if(!name || !room) return { error: 'Username and room are required.' };
-  if(existingUser) return { error: 'This username is currently in use the meeting, go back and choose another.' };
+  if(existingUser) return { error: 'Username is currently in use the meeting by another person, go back and choose another.' };
 
   const user = { id, name, room };
 

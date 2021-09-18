@@ -72,14 +72,14 @@ outline: none;
 .MuiAvatar-root {
   padding: 8px;
     border-radius: 50%;
-    background-color: #0E6A3C;
+    background-color: #182d4a;
 }
 .MuiTypography-body1 {
   font-size: 1.5rem;
   font-family:Georgia, 'Times New Roman', Times, serif;
   font-weight: 500;
   line-height: 1.5;
-  color: #f1f1f1;
+  /* color: #f1f1f1; */
 
   letter-spacing: 0.01938em;
 
@@ -95,10 +95,6 @@ outline: none;
   color: #fff !important;
   background-color: #0d203b !important;
 }
- .MuiSvgIcon-root {
-  width: 2rem !important;
-    height: 2rem !important;
-}
 .MuiButtonBase-root.MuiIconButton-root.MuiIconButton-edgeEnd .MuiIconButton-label{
   color: #0e6a3c !important;
 }
@@ -112,4 +108,8 @@ outline: none;
 }
 ._nav--unread-badge-container--11uuK{
   color:#129a5f;
+}
+
+.MuiBadge-colorPrimary{
+  background-color: #294369 !important;
 }

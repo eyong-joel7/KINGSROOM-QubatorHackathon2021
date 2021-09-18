@@ -1,7 +1,5 @@
 import React from 'react';
 
-import onlineIcon from '../../../icons/onlineIcon.png';
-
 import CloseIcon  from '@material-ui/icons/Close'
 
 import './InfoBar.css';
@@ -12,12 +10,10 @@ function capitalize(s)
 const InfoBar = ({ room, toggleControls}) => (
   <div className="infoBar">
     <div className="leftInnerContainer">
-      
-      <img className="onlineIcon" src={onlineIcon} alt="online icon" />
-      <h3>{capitalize(room)}</h3>
+      <h3 className = 'meetingID'>{capitalize(room)}</h3>
     </div>
     <div className="rightInnerContainer">
-     <span onClick = {toggleControls} style = {{color :'#fff'}}><CloseIcon /></span>
+     <span onClick = {toggleControls} className = 'closeicon'><CloseIcon /></span>
     </div>
   </div>
 );

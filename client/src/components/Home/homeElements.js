@@ -27,12 +27,12 @@ padding: 20px;
 `
 
 export const ImageContainer = styled.div`
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
     justify-self: center;
     border-radius: 100%;
     background-color: #0e6a3c;
-    padding: 40px;
+    padding: 20px;
     @media screen and (max-width: 900px){
         width: 100px;
     height: 100px;
@@ -41,7 +41,7 @@ export const ImageContainer = styled.div`
     @media screen and (max-width: 480px){
         width: 80px;
     height: 80px;
-    padding: 20px;
+    padding: 15px;
 }
     
 `;
@@ -57,11 +57,11 @@ display: flex;
 flex-direction: column;
 `
 export const H1 = styled.h3`
-font-size: 38px;
+font-size: 30px;
 font-weight: 300;
 padding: 5px;
 @media screen and (max-width: 767px){
-    font-size: 32px;
+    font-size: 22px;
 }
 `;
 

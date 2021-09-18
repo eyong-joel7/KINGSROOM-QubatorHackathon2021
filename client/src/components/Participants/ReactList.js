@@ -9,6 +9,7 @@ import userIcon from '../../icons/headphones.svg'
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    color:'#f1f1f1',
     width: "100%",
     minWidth: 260,
     maxWidth:380,
@@ -17,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "transparent",
     height: "100%"
   },
+  text:{
+    color:"#f1f1f1",
+  }
 }));
 
 export default function SimpleList({ users }) {
@@ -33,7 +37,7 @@ export default function SimpleList({ users }) {
             <ListItemIcon>
             <Avatar alt="headphones" src={userIcon} />
             </ListItemIcon>
-            <ListItemText primary= {capitalize(user.name)} />
+            <ListItemText className = {classes.text} primary= {capitalize(user.name)} />
           </ListItem>
         ))}
       </List>
