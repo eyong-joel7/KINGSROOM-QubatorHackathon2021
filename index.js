@@ -27,7 +27,7 @@ const socketToRoom = {};
 
 io.on("connection", (socket) => {
   socket.on("join room", ({ roomID, userName:name }, callBack) => {
-    const { error, user } = addUser({ id: socket.id, name, roomID });
+    const { error, user } = addUser({ id: socket.id, name, roomID, isAdmin:false });
 
     if (error) return callBack(error);
     if (users[roomID]) {
@@ -71,7 +71,7 @@ io.on("connection", (socket) => {
   });
 
   socket.on("start a meeting", ({ roomID, userName:name }, callBack) => {
-    const { error, user } = addUser({ id: socket.id, name, roomID });
+    const { error, user } = addUser({ id: socket.id, name, roomID, isAdmin:true });
     if (error) return callBack(error);
     const newUser = {
       id: socket.id,

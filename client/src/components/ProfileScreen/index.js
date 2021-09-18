@@ -72,7 +72,7 @@ const handleClose = () => {setShow(false); pageControl('home')}
 
   return (
     <div style ={{width: '100%', padding:'20px'}}>
-       <div onClick = {()=> handleClose()} style = {{display: 'flex', alignItems:'center'}}> <ChevronLeft/><span>Back</span></div>
+       <div onClick = {()=> handleClose()} style = {{display: 'flex', alignItems:'center', cursor:'pointer'}}> <ChevronLeft/><span>Back</span></div>
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>

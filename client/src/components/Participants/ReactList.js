@@ -6,6 +6,10 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import { Avatar } from "@material-ui/core";
 import userIcon from '../../icons/headphones.svg'
+import Badge from '@mui/material/Badge';
+import { styled } from '@mui/material/styles';
+import IconButton from '@mui/material/IconButton';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,6 +25,12 @@ const useStyles = makeStyles((theme) => ({
   text:{
     color:"#f1f1f1",
   }
+}));
+export const StyledBadge = styled(Badge)(({ theme }) => ({
+  '& .MuiBadge-badge': {
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: '0 4px',
+  },
 }));
 
 export default function SimpleList({ users }) {
@@ -38,6 +48,10 @@ export default function SimpleList({ users }) {
             <Avatar alt="headphones" src={userIcon} />
             </ListItemIcon>
             <ListItemText className = {classes.text} primary= {capitalize(user.name)} />
+            <IconButton aria-label="cart">
+      <StyledBadge badgeContent={user.isAdmin? 'Admin':null} color="secondary">
+      </StyledBadge>
+    </IconButton>
           </ListItem>
         ))}
       </List>

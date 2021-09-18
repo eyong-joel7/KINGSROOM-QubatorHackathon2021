@@ -1,6 +1,6 @@
 const users = [];
 
-const addUser = ({ id, name, roomID:room }) => {
+const addUser = ({ id, name, roomID:room, isAdmin }) => {
   name = name?.trim().toLowerCase();
   room = room.trim().toLowerCase();
 
@@ -9,7 +9,7 @@ const addUser = ({ id, name, roomID:room }) => {
   if(!name || !room) return { error: 'Username and room are required.' };
   if(existingUser) return { error: 'Username is currently in use the meeting by another person, go back and choose another.' };
 
-  const user = { id, name, room };
+  const user = { id, name, room, isAdmin };
 
   users.push(user);
 
