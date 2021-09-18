@@ -167,6 +167,9 @@ io.on("connection", (socket) => {
   socket.on('change', (payload) => {
     socket.broadcast.emit('change',payload)
 });
+  socket.on('admin playstop muteunmute', (payload) => {
+    socket.broadcast.emit('admin playstop muteunmute', payload)
+});
 
 });
 app.get('/', (req, res) => {

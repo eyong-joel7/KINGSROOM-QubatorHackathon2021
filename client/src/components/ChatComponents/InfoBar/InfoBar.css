@@ -33,8 +33,11 @@
     background: #182d4a;
     border-radius: 50%;
     padding: 2px;
+    transition: all 0.3s ease-in-out;
 }
-
+.closeicon:hover{
+  transform:scale(1.2)
+}
 .meetingID{
   color: #ffd700;
   font-weight: bold;
