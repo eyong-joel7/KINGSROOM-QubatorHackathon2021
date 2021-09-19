@@ -113,3 +113,15 @@ outline: none;
 .MuiBadge-colorPrimary{
   background-color: #294369 !important;
 }
+
+.MuiSelect-select.MuiSelect-outlined.MuiOutlinedInput-input.MuiInputBase-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input{
+  padding: 12px 8px !important;
+}
+
+.sendto .css-1kty9di-MuiFormLabel-root-MuiInputLabel-root{
+color: #15c26b !important;
+}
+
+.sendto .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline{
+  border-color: #a0adb9!important;
+}

@@ -723,7 +723,7 @@ html main li, html main p {
     border-top: 1px solid #1a1a1d;
     display: block;
     flex: 0 0 auto;
-   z-index: 10000;
+   z-index: 100;
     position: fixed;
     bottom: 0;
     right: 0;
