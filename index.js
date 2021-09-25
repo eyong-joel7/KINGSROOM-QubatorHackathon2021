@@ -8,6 +8,7 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 const { addUser, removeUser, getUser, getUsersInRoom } = require("./users");
+
 const io = require("socket.io")(server, {
   cors: {
     origin: "*",
@@ -48,7 +49,6 @@ io.on("connection", (socket) => {
       users[roomID].push(newUser);
       socket.username = name;
     } else {
-      // users[roomID] = [socket.id];
       return callBack(
         "The meeting might have not started or meeting ID is incorrect"
       );
@@ -142,20 +142,7 @@ io.on("connection", (socket) => {
       id: socket.id,
     });
   });
-  // // when the client emits 'typing', we broadcast it to others
-  // socket.on('typing', () => {
-  //   socket.broadcast.emit('typing', {
-  //     username: socket.username
-  //   });
-  // });
-
-  // // when the client emits 'stop typing', we broadcast it to others
-  // socket.on('stop typing', () => {
-  //   socket.broadcast.emit('stop typing', {
-  //     username: socket.username
-  //   });
-  // });
-
+ 
   socket.on("disconnect", () => {
     const roomID = socketToRoom[socket.id];
     const user = removeUser(socket.id);

@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+// /* eslint-disable jsx-a11y/anchor-is-valid */
 import {makeStyles } from '@material-ui/core';
-
 
 import React, {useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
@@ -77,7 +77,7 @@ const pageControl = (input) => {
                   <div className="_nav--nav-group-with-sidebar--2eeny">
                     <ul className="nav-group">
                       <li className="nav-item">
-                        <a  title="Home" onClick = {() => {setPage('home'); toggleHamburger()}}>
+                        <a href ='#' title="Home" onClick = {() => {setPage('home'); toggleHamburger()}}>
                           <span className="nav-item-icon-container">
                             <span className="nav-item-icon">
                               <i
@@ -132,7 +132,7 @@ const pageControl = (input) => {
                           <span className="nav-item-title">Settings</span>
                         </a>
                       </li>
-                      {/* <li className="nav-item">
+                      <li className="nav-item">
                         <a href="/" title="Logout">
                           <span className="nav-item-icon-container">
                             <span className="nav-item-icon">
@@ -151,7 +151,7 @@ const pageControl = (input) => {
                           <span className="nav-item-title">Logout</span>
                         </a>
                       </li>
-                  */}
+                 
                     </ul>
                   </div>
                 </div>
@@ -231,11 +231,6 @@ const pageControl = (input) => {
                   {page === 'setting' && <SettingScreen pageControl = {pageControl}/>}
                   </div>
                 </div>
-                {/* <span className="footer-link--footer-link--3EuAW">
-                  <div className="footer-link--contents--1AXQE shared--outer-container--3eppq">
-                    <MainControls />
-                  </div>
-                </span> */}
               </div>
             </div>
           </div>{" "}

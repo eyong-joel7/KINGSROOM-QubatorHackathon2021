@@ -5,6 +5,7 @@ import "./Input.css";
 import Button from "@mui/material/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import DialogSelect from "./SelectDialog";
+import capitalize from "../../../utils/capitalize";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -70,7 +71,7 @@ const Input = ({ setMessage, sendMessage, message, users, name }) => {
         variant="contained"
         endIcon={<KeyboardArrowDownIcon />}
       >
-        {displayUser ? displayUser : " Everyone"}
+        {displayUser ? capitalize(displayUser) : " Everyone"}
       </Button>
       <form className="form">
         <input

@@ -125,3 +125,6 @@ color: #15c26b !important;
 .sendto .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline{
   border-color: #a0adb9!important;
 }
+.css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+  min-width: 280px;
+}

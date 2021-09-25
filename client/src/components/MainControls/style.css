@@ -125,13 +125,7 @@ opacity: 0.8;
     color: #CC3B33;
 }
 
-.count {
-    background-color: red;
-    color:white;
-    border-radius: 100%;
-    padding: 5px;
-    font-size: 0.8rem;
-}
+
 .main__controls .dropdown{
     margin-top: -100px;
     background-color: #0d203b;
